@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="ipt" />
+		<button>提交</button>
+	</body>
+	<script src="../jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$.get("http://localhost:3000/code",function(str){
+			console.log(str)
+			$(`<div>${str.data}</div>`).appendTo("body")
+			$("button").click(function(){
+				if($("#ipt").val()==str.data){
+					alert("验证成功")
+				}else{
+					alert("输入错误")
+					window.open("index.html","_self")
+				}
+			})
+		})
+		
+	</script>
+</html>
